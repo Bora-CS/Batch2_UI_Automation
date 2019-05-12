@@ -64,7 +64,7 @@ public class Pizza {
 		  
 		  addressInfo.get(1).findElement(By.tagName("label")).click();
 		  
-		  Keywords.waitFor(3);
+		  Keywords.waitFor(2);
 		  
 		  List<WebElement> cashOrCard =
 		  driver.findElements(By.cssSelector(".custom-control.custom-radio"));
@@ -72,7 +72,7 @@ public class Pizza {
 		  cashOrCard.get(0).findElement(By.tagName("label")).click();
 		  cashOrCard.get(1).findElement(By.tagName("label")).click();
 		  
-		  Keywords.waitFor(3);
+		  Keywords.waitFor(2);
 		  
 		  
 		  driver.close();
