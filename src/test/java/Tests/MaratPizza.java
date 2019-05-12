@@ -62,7 +62,6 @@ public class MaratPizza {
 		
 		
 		driver.close();
-
 		driver.quit();
 
 	}
