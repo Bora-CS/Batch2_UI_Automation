@@ -64,6 +64,8 @@ public class Pizza {
 		Keywords.waitFor(2);
 
 		driver.findElement(By.xpath("/html/body/div/div[2]/div[2]/form/button")).click();
+		Keywords.waitFor(2);
+		
 		driver.close();
 
 		driver.quit();
