@@ -20,7 +20,6 @@ public class Pizza {
 		WebDriver driver = new ChromeDriver();
 
 		driver.navigate().to(Constants.APPLICATION_URL);
-
 		Keywords.waitFor(1);
 
 		driver.findElement(By.id("firstName")).sendKeys("Kamontip");
@@ -67,7 +66,6 @@ public class Pizza {
 		Keywords.waitFor(2);
 		
 		driver.close();
-
 		driver.quit();
 
 	}
