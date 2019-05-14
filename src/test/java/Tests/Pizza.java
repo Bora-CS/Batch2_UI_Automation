@@ -61,7 +61,7 @@ public class Pizza {
 		  List<WebElement> addressInfo =
 		  driver.findElements(By.cssSelector(".custom-control.custom-checkbox"));
 		  addressInfo.get(0).findElement(By.tagName("label")).click();
-		  
+		  Keywords.waitFor(1);
 		  addressInfo.get(1).findElement(By.tagName("label")).click();
 		  
 		  Keywords.waitFor(2);
@@ -70,10 +70,25 @@ public class Pizza {
 		  driver.findElements(By.cssSelector(".custom-control.custom-radio"));
 		  
 		  cashOrCard.get(0).findElement(By.tagName("label")).click();
+		  Keywords.waitFor(1);
+		  
+		  driver.findElement(By.id("cc-name")).sendKeys("Nurala Abliz");
+		  Keywords.waitFor(1);
+		  driver.findElement(By.id("cc-number")).sendKeys("123 4567***");
+		  Keywords.waitFor(1);
+		  driver.findElement(By.id("cc-expiration")).sendKeys("20210901");
+		  Keywords.waitFor(1);
+		  driver.findElement(By.id("cc-cvv")).sendKeys("****");
+		  
+		  Keywords.waitFor(2);
+		  
 		  cashOrCard.get(1).findElement(By.tagName("label")).click();
 		  
 		  Keywords.waitFor(2);
 		  
+		  driver.findElement(By.cssSelector(".btn.btn-primary.btn-lg.btn-block")).click();
+		  
+		   Keywords.waitFor(2);
 		  
 		  driver.close();
 		  
