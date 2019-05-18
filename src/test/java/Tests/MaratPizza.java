@@ -41,11 +41,10 @@ public class MaratPizza {
 
 		driver.findElement(By.id("zip")).sendKeys("22027");
 
-
 		List<WebElement> sameAddress = driver.findElements(By.cssSelector(".custom-control.custom-checkbox"));
 
 		sameAddress.get(0).findElement(By.tagName("label")).click();
-		
+
 		sameAddress.get(1).findElement(By.tagName("label")).click();
 
 		driver.findElement(By.id("cc-name")).sendKeys("Waseem M Zeid");
@@ -55,13 +54,11 @@ public class MaratPizza {
 		driver.findElement(By.id("cc-expiration")).sendKeys("05/22");
 
 		driver.findElement(By.id("cc-cvv")).sendKeys("053");
+ 
+		Keywords.waitFor(7);
 
-	
-		Keywords.waitFor(9);
-		
-		
-		
 		driver.close();
+
 		driver.quit();
 
 	}
