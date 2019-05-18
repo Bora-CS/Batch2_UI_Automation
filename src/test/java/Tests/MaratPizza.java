@@ -13,7 +13,7 @@ import BoraTech.Batch2_UI_Automation.Keywords;
 
 public class MaratPizza {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 
 		System.setProperty("webdriver.chrome.driver", Constants.Driver_PATH_WINDOWS);
 
@@ -54,7 +54,7 @@ public class MaratPizza {
 		driver.findElement(By.id("cc-expiration")).sendKeys("05/22");
 
 		driver.findElement(By.id("cc-cvv")).sendKeys("053");
- 
+
 		Keywords.waitFor(7);
 
 		driver.close();
@@ -62,5 +62,4 @@ public class MaratPizza {
 		driver.quit();
 
 	}
-
 }
