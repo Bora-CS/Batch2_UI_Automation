@@ -329,9 +329,14 @@
               </div>
             </div>
             <hr class="mb-4" />
-            <button class="btn btn-primary btn-lg btn-block" type="submit">
+            <button
+              class="btn btn-primary btn-lg btn-block"
+              type="submit"
+              onclick="submitOrder()"
+            >
               Continue to checkout
             </button>
+            <p id="submitText"></p>
           </form>
         </div>
       </div>
@@ -345,6 +350,16 @@
           } else {
             x.style.display = "none";
           }
+        }
+
+        function submitOrder() {
+          var txt;
+          if (confirm("You sure 3 pizzas are enough?")) {
+            txt = "Cool, your order is submitted!";
+          } else {
+            txt = "Go and add more pizzas in the cart then!";
+          }
+          document.getElementById("submitText").innerHTML = txt;
         }
       </script>
 
