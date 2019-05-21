@@ -36,6 +36,7 @@ public class TestSelenium {
 		driver.close();
 
 		driver.quit();
+		
 	}
 
 	public static void switchToNewWindow(WebDriver driver, String main) {

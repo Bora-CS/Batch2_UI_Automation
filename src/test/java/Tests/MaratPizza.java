@@ -15,7 +15,7 @@ public class MaratPizza {
 	
 	public static void main(String[] args) {
 		
-		System.setProperty("webdriver.chrome.driver", Constants.DRIVER_PATH_MAC);
+		System.setProperty("webdriver.chrome.driver", Constants.DRIVER_PATH_WINDOW);
 
 		WebDriver driver = new ChromeDriver();
 
