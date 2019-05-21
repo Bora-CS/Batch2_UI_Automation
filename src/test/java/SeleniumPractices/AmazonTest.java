@@ -16,33 +16,25 @@ public class AmazonTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.setProperty("webdriver.chrome.driver", Constants.DRIVER_PATH_WINDOW);
-		
+		System.setProperty("webdriver.chrome.driver", Constants.DRIVER_PATH_WINDOWS);
 		WebDriver driver = new ChromeDriver();	
+		
 		driver.navigate().to("http://www.seleniumframework.com/Practiceform/");
 
-		String main = driver.getWindowHandle();
+		String target = "Buzz Buzz";
 		
-		driver.findElement(By.xpath("//button[text() = 'New Message Window']")).click();
+		String currentText = driver.findElement(By.id("clock")).getText();
 		
-		Keywords.waitFor(3);
+		String priviousText = "";
 		
-		switchToNewWindow(driver,main);
-
-		//NOW done switching
-			
-		System.out.println(driver.findElement(By.tagName("body")).getText());
+		while (!currentText.equals(target)) {
+			if(!currentText.equals(priviousText)) System.out.println(currentText);
+			priviousText = currentText;
+			currentText = driver.findElement(By.id("clock")).getText();
+			}
 		
-		driver.close();
-		
-		driver.switchTo().window(main);
-		
-		driver.findElement(By.xpath("//button[text() = 'New Browser Tab']")).click();
-
-		switchToNewWindow(driver,main);
-
-		System.out.println(driver.getTitle());
-		
+		System.out.println(currentText);
+				
 		driver.close();
 		
 		driver.quit();

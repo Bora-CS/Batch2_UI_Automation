@@ -15,7 +15,7 @@ public class PizzaPageAutomate {
 
 	public static void main(String[] args) {
 
-		System.setProperty("webdriver.chrome.driver", Constants.DRIVER_PATH_WINDOW);
+		System.setProperty("webdriver.chrome.driver", Constants.DRIVER_PATH_WINDOWS);
 		WebDriver driver = new ChromeDriver();
 
 		driver.navigate().to(Constants.APPLICATION_URL);
