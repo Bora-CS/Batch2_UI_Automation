@@ -25,34 +25,60 @@ public class AmazonTesting4 {
 		
 		driver.findElement(By.className("nav-input")).click();
 		
-		List<WebElement> elements =
-				driver.findElements(By.className(".a-size-medium.a-color-base.a-text-normal"));
-		
-		System.out.println(((WebElement) elements).getText());
-		
-		if (((WebElement) elements).getText().contains("iphnoe") ||
-				((WebElement) elements).getText().contains("iPhnoe") ||
-				((WebElement) elements).getText().contains("IPHONE")) {
-			
-				List<WebElement> results = 
-					driver.findElements(By.cssSelector(".sg-col-20-of-24.s-result-item.sg-col-0-of-12.sg-col-28-of-32.sg-col-16-of-20.sg-col.sg-col-32-of-36.sg-col-12-of-16.sg-col-24-of-28"));
-				
-				for (WebElement result : results) {
-					
-					System.out.println(result.getText());
-				}
 
-				List<WebElement> results2 = 
-						driver.findElements(By.className("a-price"));
+		List<WebElement> elements =
+				driver.findElements(By.cssSelector(".a-size-medium.a-color-base.a-text-normal"));
+		for (WebElement element : elements) {
 				
-				for (WebElement result2 : results2) {
+			if (element.getText().contains("Apple iPhone")) {
+				System.out.println(element.getText());
+			}
+			}
+		List<WebElement> prices =
+						driver.findElements(By.className("a-price"));
+		
+		for (WebElement price : prices) {
 					
-					System.out.println(result2.getText());
+					System.out.println(price.getText());
 				}
-		}
-		else {
+		
 			
-		}
+			
+					
+	
+			
+			
+			
+		
+//		for(int i=0;i<elements.size();i++){
+//		    System.out.println(price.getText(i)+":"+element.getText(i));
+//		}
+	
+//		System.out.println(((WebElement) elements).getText());
+//		
+//		if (((WebElement) elements).getText().contains("iphnoe") ||
+//				((WebElement) elements).getText().contains("iPhnoe") ||
+//				((WebElement) elements).getText().contains("IPHONE")) {
+//			
+//				List<WebElement> results = 
+//					driver.findElements(By.cssSelector(".sg-col-20-of-24.s-result-item.sg-col-0-of-12.sg-col-28-of-32.sg-col-16-of-20.sg-col.sg-col-32-of-36.sg-col-12-of-16.sg-col-24-of-28"));
+//				
+//				for (WebElement result : results) {
+//					
+//					System.out.println(result.getText());
+//				}
+//
+//				List<WebElement> results2 = 
+//						driver.findElements(By.className("a-price"));
+//				
+//				for (WebElement result2 : results2) {
+//					
+//					System.out.println(result2.getText());
+//				}
+//		}
+//		else {
+//			
+//		}
 //		List<WebElement> results = 
 //			driver.findElements(By.cssSelector(".sg-col-20-of-24.s-result-item.sg-col-0-of-12.sg-col-28-of-32.sg-col-16-of-20.sg-col.sg-col-32-of-36.sg-col-12-of-16.sg-col-24-of-28"));
 //		
@@ -75,6 +101,7 @@ public class AmazonTesting4 {
 		driver.close();
 		driver.quit();
 
-	}
+}
+
 
 }
