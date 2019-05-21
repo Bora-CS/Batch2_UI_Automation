@@ -24,7 +24,7 @@ public class Amazon {
 		Keywords.waitFor(2);
 		
 		
-		driver.findElement(By.xpath("//span[@class=a-size-base-plus a-color-base a-text-normal]/span[@class= a-price-whole)]")).getText();
+		
 		ArrayList<String> myList = new ArrayList<String>();
 		
 		
