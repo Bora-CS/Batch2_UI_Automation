@@ -14,7 +14,7 @@ public class amazonPractice {
 	public static void main(String[] args) {
 	
 
-		System.setProperty("webdriver.chrome.driver", Constants.Driver_PATH_WINDOWS);
+		System.setProperty("webdriver.chrome.driver", Constants.DRIVER_PATH_WINDOWS);
 
 		WebDriver driver = new ChromeDriver();
 

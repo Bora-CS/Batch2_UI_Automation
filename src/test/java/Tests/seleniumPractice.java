@@ -1,4 +1,3 @@
-
 package Tests;
 
 import java.util.List;
@@ -9,13 +8,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Wait;
-
 import BoraTech.Batch2_UI_Automation.Keywords;
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class seleniumframeworkpractice {
+public class seleniumPractice {
 
 	public static void main(String[] args) {
 
@@ -25,27 +22,17 @@ public class seleniumframeworkpractice {
 		WebDriver driver = new ChromeDriver();
 
 		driver.navigate().to("http://www.seleniumframework.com/Practiceform/");
+		String target = "Buzz Buzz";
+		
+		
+		
+		cleanUp(driver);
 
-		String mainHandle = driver.getWindowHandle();
+	}
+	public static void cleanUp(WebDriver driver) {
+		driver.close();
 
-		driver.findElement(By.xpath("//button[text()='New Message Window']")).click();
-
-		Set<String> handles = driver.getWindowHandles();
-
-		String newWindow = "";
-
-		for (String setHandles : handles) {
-
-			if (!setHandles.equals(handles)) {
-				newWindow = setHandles;
-			}
-
-			driver.switchTo().window(newWindow);
-			
-			
-			
-		}
-
+		driver.quit();
 	}
 
 }
