@@ -14,7 +14,7 @@ public class AmazonWebPage {
 
 	public static void main(String[] args) {
 
-		System.setProperty("webdriver.chrome.driver", Constants.CHROME_DRIVER_PATH_MAC);
+		System.setProperty("webdriver.chrome.driver", Constants.DRIVER_PATH_WINDOW);
 		WebDriver myDriver = new ChromeDriver();
 		myDriver.navigate().to("https://www.amazon.com");
 		Keywords.waitFor(1);

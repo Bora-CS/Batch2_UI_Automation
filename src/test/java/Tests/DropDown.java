@@ -1,7 +1,5 @@
 package Tests;
 
-import javax.swing.Action;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,29 +9,24 @@ import org.openqa.selenium.interactions.Actions;
 import BoraTech.Batch2_UI_Automation.Constants;
 import BoraTech.Batch2_UI_Automation.Keywords;
 
-public class doubleClick {
+public class DropDown {
 
 	public static void main(String[] args) {
 		System.setProperty("webdriver.chrome.driver", Constants.DRIVER_PATH_WINDOW);
 
 		WebDriver driver = new ChromeDriver();
-
-		driver.navigate().to("http://www.seleniumframework.com/Practiceform/");
-		driver.manage().window().maximize();
+		driver.get("http://demo.guru99.com/test/drag_drop.html");
 		
-		 WebElement doubleClickButton = driver.findElement(By.id("doubleClick"));
-	
 		
-		System.out.println(doubleClickButton.getAttribute("style"));
+		WebElement bank = driver.findElement(By.partialLinkText("Bank"));
+		WebElement slot = driver.findElement(By.xpath("//ol[@id='bank']/li"));
 		Actions action = new Actions(driver);
 		
-		action.doubleClick().perform();
-		Keywords.waitFor(2);
-		System.out.println(doubleClickButton.getAttribute("style"));
+		action.dragAndDrop(bank, slot).build().perform();
+		Keywords.waitFor(3);
 		
 		
 		driver.close();
-		
 		driver.quit();
 	}
 
