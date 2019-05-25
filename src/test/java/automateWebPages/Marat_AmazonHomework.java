@@ -1,4 +1,4 @@
-package Tests;
+package automateWebPages;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 import BoraTech.Batch2_UI_Automation.Constants;
 import BoraTech.Batch2_UI_Automation.Keywords;
 
-public class Current_HW {
+public class Marat_AmazonHomework {
 
 	public static void main(String[] args) {
 		
@@ -71,6 +71,4 @@ public class Current_HW {
 		driver.close();
 		driver.quit();
 	}
-}	
-
-
+}
