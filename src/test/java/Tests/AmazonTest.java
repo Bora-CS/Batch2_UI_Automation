@@ -1,11 +1,13 @@
 package Tests;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.By.ByXPath;
 import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,34 +25,93 @@ public class AmazonTest {
 		// https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html
 
 		System.setProperty("webdriver.chrome.driver", Constants.CHROME_DRIVER_PATH_MAC);
-		
+
 		WebDriver driver = new ChromeDriver();
 		
-		driver.get(Constants.APPLICATION_URL);
+		driver.get("https://www.amazon.com/");
 		
-		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[2]")));
+		int page = 1;
+		List<Result> finalResults = new ArrayList<Result>();
+
+		driver.findElement(By.id("twotabsearchtextbox")).sendKeys("Nike");
+		driver.findElement(By.id("twotabsearchtextbox")).submit();
 		
-		WebElement doubleClickButton = driver.findElement(By.id("doubleClick"));
+		while (finalResults.size() < 100) {
+			// Repeat from here *********************************
+			List<WebElement> results = driver.findElements(By.xpath("//span[@data-component-type='s-search-results']/div/div[starts-with(@data-asin, 'B')]"));
+					
+			for (int i = 1; i <= results.size(); i++) {
+				String parentXpath = "//span[@data-component-type='s-search-results']/div/div[" + i + "]";			
+				String title;
+				String price;
+				
+				try {
+					title = driver.findElement(By.xpath(parentXpath + "//span[@class='a-size-base-plus a-color-base a-text-normal']")).getText();
+				} catch (Exception e) {
+					title = "Title not available";
+				}
+				
+				try {
+					price = driver.findElement(By.xpath(parentXpath + "//a[@class='a-size-base a-link-normal s-no-hover a-text-normal']//span[@data-a-size='l']")).getText();
+				} catch (Exception e) {
+					price = "Price not available";
+				}
+				
+				price = getPrice(price);
+							
+				if (!price.contains("FREE") && !price.equals("Price not available")) {
+//					System.out.println("Item "+ itemNumber + " $" + price + "\t" + title);
+					finalResults.add(new Result(title, Double.parseDouble(price)));
+					if (finalResults.size() == 100) break;
+				}
+			}
+			// to here *********************************
+			if (finalResults.size() == 100) break;
+			driver.findElement(By.xpath("//a[text()='Next']")).click();
+		}
 		
-		System.out.println(doubleClickButton.getAttribute("style"));
+		System.out.println("Item Number\tPrice\tItem Name");
 		
-		Actions action = new Actions(driver);
+		double sum = 0.0;
+		for (int i = 0; i < finalResults.size(); i++) {
+			System.out.println((i+1) + "\t\t$" + finalResults.get(i).price + "\t" + finalResults.get(i).title);
+			sum = sum + finalResults.get(i).price;
+		}
 		
-		action.doubleClick(doubleClickButton).perform();
+		System.out.println();
+		System.out.println("The average price for Nike is " + sum/100);
 		
 		Keywords.waitFor(2);
-		
-		System.out.println(doubleClickButton.getAttribute("style"));
-		driver.switchTo().defaultContent();
-		
-		driver.findElement(By.id("firstName")).sendKeys("Hello");
-		
-		Keywords.waitFor(2);
-		
+
 		driver.close();
-		
+
 		driver.quit();
 
+	}
+	
+	public static String getPrice (String a) {
+		a = a.replace("\n", ".").replace("-.", "-").replace(".-", "-").replace("$", "");
+		
+		if (!a.contains("-")) {
+			return a;
+		}
+		
+		String[] prices = a.split("-");
+		
+		double[] pricesInDouble = new double[prices.length];
+		for (int i = 0; i < prices.length; i++) {
+			pricesInDouble[i] = Double.parseDouble(prices[i]);
+		}
+		
+		double average = (pricesInDouble[0] + pricesInDouble[1]) / 2;
+		
+		return (Math.round(average * 100.0) / 100.0) + "";
+	}
+	
+	public static void highlightElement (By locator, WebDriver driver) {
+		WebElement elementToHighlight = driver.findElement(locator);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", elementToHighlight);		
 	}
 
 	public static void switchToNewWIndow(WebDriver driver, String main) {
