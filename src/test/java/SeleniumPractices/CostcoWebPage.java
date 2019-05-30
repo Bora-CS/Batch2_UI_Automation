@@ -21,9 +21,9 @@ public class CostcoWebPage {
 
 		driver.navigate().to("https://www.costco.com/");
 		WebDriverWait wait = new WebDriverWait(driver, 40);
-		wait.until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("/html[1]/body[1]/div[6]/div[2]/div[1]/div[1]/a[6]/img[1]")))
-				.click();
+		WebElement macPage = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//a[contains(@id,'slick-slide')]//img[contains(@title,'$150 OFF MacBook Pro 13.3-inch.')][1])")));
+		macPage.click();
 		Keywords.waitFor(1);
 
 		List<WebElement> resultSearch = driver.findElements(By.className("product-tile-set"));
@@ -35,7 +35,6 @@ public class CostcoWebPage {
 				.click();
 
 		String itemText = driver.findElement(By.className("product-title")).getText();
-
 		WebElement checkOut = driver.findElement(By.id("shopCartCheckoutSubmitButton"));
 		if (itemText.equals("Apple MacBook Pro 13.3\" - Intel Core i5 - 8GB Memory - 256GB SSD - Silver")
 				&& checkOut.isDisplayed()) {
