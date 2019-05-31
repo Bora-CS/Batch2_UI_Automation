@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import BoraTech.Batch2_UI_Automation.Constants;
 import BoraTech.Batch2_UI_Automation.Keywords;
@@ -15,34 +17,17 @@ public class Amazon {
 	public static void main(String[] args) {
 		System.setProperty("webdriver.chrome.driver", Constants.CHROME_DRIVER_PATH_MAC);
 		WebDriver driver = new ChromeDriver();
-		driver.navigate().to("https://www.amazon.com");
-		Keywords.waitFor(1);
-
-		driver.findElement(By.id("twotabsearchtextbox")).sendKeys("MacBook air case");
+		driver.navigate().to("https://www.costco.com/");
 		
-		driver.findElement(By.className("nav-input")).click();
-		Keywords.waitFor(2);
+		WebDriverWait wait = new WebDriverWait(driver,15);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("slick-slide04")));
 		
-		
-		
-		ArrayList<String> myList = new ArrayList<String>();
-		
-		
-		    
-		for (int i = 0; i < myList.size(); i++) {
-			driver.findElement(By.xpath("//span[@class=a-size-base-plus a-color-base a-text-normal]/span[@class= a-price-whole)]")).getText();
-			
-		}
-
-		System.out.println(myList.size());
-		
-		
-		
-		
+		driver.findElement(By.xpath("//img[contains(@title,'Apple Watch Series 4 GPS Only']")).click();
+	   			
 		driver.close();
 		driver.quit();
 		
-		
+	
 		
 
 	}
