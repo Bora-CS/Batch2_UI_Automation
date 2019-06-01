@@ -1,6 +1,7 @@
 package Tests;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -68,6 +69,17 @@ public class Pizza {
 		driver.close();
 		driver.quit();
 
+		
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
+		
+//		public static void highlightElement(By locator, WebDriver driver);
+//		WebElement elementToHighlight = driver.findElement(locator);
+//		JavascriptE
+		
+		
+		
+		
 	}
 
 }

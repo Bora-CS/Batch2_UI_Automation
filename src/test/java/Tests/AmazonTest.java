@@ -19,38 +19,32 @@ import BoraTech.Batch2_UI_Automation.Keywords;
 public class AmazonTest {
 
 	public static void main(String[] args) {
+		
 //		System.out.println(System.getProperty("user.dir"));
 		// https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html
 
 		System.setProperty("webdriver.chrome.driver", Constants.CHROME_DRIVER_PATH_MAC);
-		
 		WebDriver driver = new ChromeDriver();
-		
 		driver.get(Constants.APPLICATION_URL);
-		
 		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[2]")));
-		
 		WebElement doubleClickButton = driver.findElement(By.id("doubleClick"));
-		
 		System.out.println(doubleClickButton.getAttribute("style"));
-		
 		Actions action = new Actions(driver);
-		
 		action.doubleClick(doubleClickButton).perform();
-		
 		Keywords.waitFor(2);
+	
 		
 		System.out.println(doubleClickButton.getAttribute("style"));
 		driver.switchTo().defaultContent();
-		
 		driver.findElement(By.id("firstName")).sendKeys("Hello");
-		
 		Keywords.waitFor(2);
-		
 		driver.close();
-		
 		driver.quit();
+		
+		
+		
 
+	
 	}
 
 	public static void switchToNewWIndow(WebDriver driver, String main) {
@@ -88,6 +82,7 @@ public class AmazonTest {
 	public static void getItemNumbersInCart(WebDriver driver) {
 		int a = Integer.valueOf(driver.findElement(By.id("nav-cart")).getAttribute("aria-label").split(" ")[0]);
 		System.out.println("We currently have " + a + " items in cart.");
-	}
 
+
+	}
 }
