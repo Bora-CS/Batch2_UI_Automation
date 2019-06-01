@@ -15,7 +15,7 @@ public class Pizza {
 
 	public static void main(String[] args) {
 
-		System.setProperty("webdriver.chrome.driver", Constants.CHROME_DRIVER_PATH_WINDOWS);
+		System.setProperty("webdriver.chrome.driver", Constants.APPLICATION_URL);
 
 		WebDriver driver = new ChromeDriver();
 
