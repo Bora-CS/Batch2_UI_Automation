@@ -28,23 +28,35 @@ public class AmazonTesting4 {
 
 		List<WebElement> elements =
 				driver.findElements(By.cssSelector(".a-size-medium.a-color-base.a-text-normal"));
-		for (WebElement element : elements) {
-				
-			if (element.getText().contains("Apple iPhone")) {
-				System.out.println(element.getText());
-			}
-			}
+		
 		List<WebElement> prices =
-						driver.findElements(By.className("a-price"));
+						driver.findElements(By.xpath("//*[@data-a-size='l']"));
 		
-		for (WebElement price : prices) {
-					
-					System.out.println(price.getText());
+		System.out.println(prices.size());
+		System.out.println(elements.size());
+		for (int i = 0, j = 0; i < elements.size() && j <= prices.size(); i++, j++) {
+			
+				WebElement price = elements.get(i);
+				WebElement element = prices.get(j);
+				if (i==j) {
+		System.out.println(i + "\t:" + element.getText().replace("\n", ".").trim() + "\t:" + price.getText());
+
 				}
+		}
 		
-			
-			
-					
+//		for (WebElement price : prices) {
+//					
+//					System.out.println(price.getText());
+//				}
+//		
+//			for (WebElement element : elements) {
+//				
+//			if (element.getText().contains("Apple iPhone")) {
+//				System.out.println(element.getText());
+//			}
+//			}
+//			
+//					
 	
 			
 			
@@ -95,7 +107,7 @@ public class AmazonTesting4 {
 //			System.out.println(result2.getText());
 //		}
 		
-		Keywords.waitFor(3);
+		Keywords.waitFor(1);
 		
 		
 		driver.close();
