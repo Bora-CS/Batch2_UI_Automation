@@ -1,4 +1,4 @@
-package automateWebPages;
+package Tests;
 
 import java.util.List;
 
@@ -32,9 +32,9 @@ public class Marat_AmazonHomework {
 		
 		List<WebElement> prices = driver.findElements(By.xpath("//a[@class='a-size-base a-link-normal s-no-hover a-text-normal']/span[1]"));
 		
-//		System.out.println("Size of price List: " + prices.size());
-//		System.out.println("Size of result List: " + results.size());
-//		System.out.println();
+		System.out.println("Size of price List: " + prices.size());
+		System.out.println("Size of result List: " + results.size());
+		System.out.println();
 		
 		System.out.println("ItemNo:\t" + "Price:\t" + " " + "Title:");
 		System.out.println();

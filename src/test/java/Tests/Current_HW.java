@@ -32,6 +32,15 @@ public class Current_HW {
 		
 		List<WebElement> prices = driver.findElements(By.xpath("//a[@class='a-size-base a-link-normal s-no-hover a-text-normal']/span[1]"));
 		
+//		driver.findElement(By.className("a-normal")).click();
+//		
+//		List<WebElement> result2 = driver.findElements(By.cssSelector(".a-size-base-plus.a-color-base.a-text-normal"));
+//		
+//		List<WebElement> prices2 = driver.findElements(By.xpath("//a[@class='a-size-base a-link-normal s-no-hover a-text-normal']/span[1]"));
+		
+//		results.addAll(result2);
+//		prices.addAll(prices2);
+		
 		System.out.println("Size of price List: " + prices.size());
 		System.out.println("Size of result List: " + results.size());
 		System.out.println();
@@ -39,7 +48,7 @@ public class Current_HW {
 		System.out.println("ItemNo:\t" + "Price:\t" + " " + "Title:");
 		System.out.println();
 		
-		int countItem = 0;
+		int countItem = 1;
 		double currentPrice;
 		double totalPrice = 0;
 		double averagePrice = 0;
@@ -56,10 +65,10 @@ public class Current_HW {
 		    currentPrice = Double.parseDouble(priceNumb);
 		    totalPrice = totalPrice + currentPrice;
 		    averagePrice = totalPrice/prices.size();
-		    countItem++;
 		    
 //		    System.out.println(countItem + "  " + priceNumb);
 		    System.out.println(countItem + ".\t" + priceNumb + "\t " + result.getText());
+		    countItem++;
 		}
 		totalPrice = Math.round(totalPrice*100.0)/100.0;
 		averagePrice = Math.round(averagePrice*100.0)/100.0;

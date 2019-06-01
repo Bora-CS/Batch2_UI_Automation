@@ -1,4 +1,4 @@
-package automateWebPages;
+package Tests;
 
 import java.util.List;
 
