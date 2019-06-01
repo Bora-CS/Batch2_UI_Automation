@@ -10,15 +10,15 @@ import BoraTech.Batch2_UI_Automation.Keywords;
 
 public class TestScenario3 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 
 		System.setProperty("webdriver.chrome.driver", Constants.CHROME_DRIVER_PATH_MAC);
 		WebDriver myDriver = new ChromeDriver();
 		myDriver.navigate().to("http://bora-test.s3-website-us-east-1.amazonaws.com/");
-		Keywords.waitFor(1);
+		Thread.sleep(1000);
 
 		WebElement logIn1 = myDriver.findElement(By.xpath("//ul[2]/li[2]/a"));
-		Keywords.waitFor(1);
+		Thread.sleep(1000);
 		WebElement logIn2 = myDriver.findElement(By.xpath("//a[@class='btn btn-lg btn-light']"));
 
 		if (logIn1.isDisplayed() && logIn2.isDisplayed()) {
@@ -28,11 +28,11 @@ public class TestScenario3 {
 		WebElement logInText = myDriver.findElement(By.xpath("//h1[@class='display-4 text-center']"));
 		String expectedLogInText = "Log In";
 		if (logInText.getText().equals(expectedLogInText)) {
-			Keywords.waitFor(1);
+			Thread.sleep(1000);
 			myDriver.findElement(By.name("email")).sendKeys("Shirinay@bora-cs.com");
-			Keywords.waitFor(1);
+			Thread.sleep(1000);
 			myDriver.findElement(By.name("password")).sendKeys("1234567");
-			Keywords.waitFor(1);
+			Thread.sleep(1000);
 			myDriver.findElement(By.xpath("//input[@class='btn btn-info btn-block mt-4']")).click();
 		}
 
@@ -43,38 +43,38 @@ public class TestScenario3 {
 				&& newStudent.isDisplayed()) {
 			System.out.println("Log in successful!");
 		}
-		Keywords.waitFor(1);
+		Thread.sleep(1000);
 		WebElement logOutButton = myDriver.findElement(By.xpath("//ul[@class='navbar-nav ml-auto']//a[1]"));
 		if (logOutButton.isDisplayed()) {
 			logOutButton.click();
 		}
-		Keywords.waitFor(1);
+		Thread.sleep(1000);
 		WebElement alert = myDriver.findElement(By.xpath("//div[@class='modal-content']"));
 		if (alert.isDisplayed()) {
 			System.out.println("Alert dispaled");
 			WebElement confirmText = myDriver.findElement(By.xpath("//h5[@id='exampleModalCenterTitle']"));
 			String expectedText = "Are you sure?";
 			if (confirmText.getText().equals(expectedText)) {
-				Keywords.waitFor(1);
+				Thread.sleep(1000);
 				myDriver.findElement(By.xpath("//button[@class='btn btn-secondary']")).click();
-				Keywords.waitFor(1);
+				Thread.sleep(1000);
 			}
 		}
 
 		if (studentProfile.isDisplayed()) {
 			System.out.println("We are still on the student profile page.");
-			Keywords.waitFor(1);
+			Thread.sleep(1000);
 		}
 
 		myDriver.findElement(By.xpath("//ul[@class='navbar-nav ml-auto']//a[1]")).click();
-		Keywords.waitFor(1);
+		Thread.sleep(1000);
 		myDriver.findElement(By.xpath("//a[@class='btn btn-info']")).click();
 
-		Keywords.waitFor(1);
+		Thread.sleep(1000);
 		WebElement bigText = myDriver.findElement(By.xpath("//h1[@class='display-3 mb-4']"));
 		if (bigText.isDisplayed()) {
 			System.out.println("We are back on the home page.");
-			Keywords.waitFor(1);
+			Thread.sleep(1000);
 		}
 
 		myDriver.close();
