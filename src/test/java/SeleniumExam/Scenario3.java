@@ -1,4 +1,4 @@
-package exam;
+package SeleniumExam;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -6,9 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import BoraTech.Batch2_UI_Automation.Constants;
-import BoraTech.Batch2_UI_Automation.Keywords;
 
-public class TestScenario3 {
+public class Scenario3 {
 
 	public static void main(String[] args) throws InterruptedException {
 

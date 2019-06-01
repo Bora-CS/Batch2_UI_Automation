@@ -1,4 +1,4 @@
-package exam;
+package SeleniumExam;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import BoraTech.Batch2_UI_Automation.Constants;
 
-public class TestScenario1 {
+public class Scenario1 {
 
 	public static boolean testPassed = true;
 
@@ -46,8 +46,8 @@ public class TestScenario1 {
 		boolean foundStudent = false;
 		for (int i = 0; i < allName.size(); i++) {
 			if (allName.get(i).getText().equals(studentNameToFind1)) {
-				String email = myDriver.findElement(By.xpath("//tr[" + (i+2) + "]/td[2]")).getText();
-				String phoneNumber = myDriver.findElement(By.xpath("//tr[" + (i+2) + "]/td[3]")).getText();
+				String email = myDriver.findElement(By.xpath("//tr[" + (i + 2) + "]/td[2]")).getText();
+				String phoneNumber = myDriver.findElement(By.xpath("//tr[" + (i + 2) + "]/td[3]")).getText();
 
 				if (email.contains(studentNameToFind1 + "@bora-cs.com")) {
 					System.out.println("The email is in correct format: \t" + email);
@@ -66,9 +66,6 @@ public class TestScenario1 {
 			System.out.println("Student not found, please try again");
 			testPassed = false;
 		}
-		
-		
-		
 
 		myDriver.close();
 		myDriver.quit();

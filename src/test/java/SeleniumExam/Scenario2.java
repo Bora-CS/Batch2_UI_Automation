@@ -1,4 +1,4 @@
-package exam;
+package SeleniumExam;
 
 import java.util.List;
 
@@ -9,9 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import BoraTech.Batch2_UI_Automation.Constants;
-import BoraTech.Batch2_UI_Automation.Keywords;
 
-public class TestScenario2 {
+public class Scenario2 {
 
 	public static void main(String[] args) throws InterruptedException {
 
@@ -62,6 +61,7 @@ public class TestScenario2 {
 
 		myDriver.close();
 		myDriver.quit();
+
 	}
 
 }
