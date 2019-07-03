@@ -1,8 +1,5 @@
 package APITests;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import org.json.simple.JSONObject;
 
 import io.restassured.RestAssured;
@@ -93,6 +90,21 @@ public class WebServices {
 		} else {
 			return null;
 		}
+	}
+	
+	public static Response logInTest(String email, String password) {
+		String endpoint = "/api/users/login";
+		RestAssured.baseURI = APPLICATION_URL;
+		RequestSpecification request = RestAssured.given();
+		request.header("Content-Type", "application/json");
+		
+		JSONObject requestBody = new JSONObject();
+		requestBody.put("email", email);
+		requestBody.put("password", password);
+		request.body(requestBody);
+		
+		Response response = request.post(endpoint);		
+		return response;
 	}
 
 }
