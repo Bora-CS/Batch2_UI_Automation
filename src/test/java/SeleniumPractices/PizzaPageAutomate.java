@@ -61,7 +61,9 @@ public class PizzaPageAutomate {
 //		paymentType.get(1).findElement(By.tagName("label")).click();
 		
 //      for checking out
-		driver.findElement(By.xpath("/html/body/div/div[2]/div[2]/form/button")).click();
+		driver.findElement(By.cssSelector(".btn.btn-primary.btn-lg.btn-block")).click();
+		driver.switchTo().alert().accept();
+		
 		
 		Keywords.waitFor(3);
 		
